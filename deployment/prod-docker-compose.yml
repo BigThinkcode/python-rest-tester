@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  rest_tester:
+    build:
+      context: ..
+      dockerfile: ./deployment/local.Dockerfile
+    env_file:
+      - prod.env

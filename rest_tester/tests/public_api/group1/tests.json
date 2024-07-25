@@ -1,0 +1,24 @@
+[
+    {
+        "api": {
+            "uri": "/users/5/todos",
+            "method": "get"
+        },
+        "tests": {
+            "statusCode": 200,
+            "timeout": 10,
+            "jsonSchema": "UserTodos"
+        }
+    },{
+        "api": {
+            "uri": "/users/add",
+            "method": "post",
+            "data": "User"
+        },
+        "tests": {
+            "statusCode": 200,
+            "timeout": 10,
+            "jsonSchema": "Message"
+        }
+    }
+]

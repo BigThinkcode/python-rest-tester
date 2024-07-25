@@ -1,0 +1,12 @@
+[
+    {
+        "api": {
+            "uri": "/user/me",
+            "method": "get"
+        },
+        "tests": {
+            "statusCode": 200,
+            "timeout": 10
+        }
+    }
+]

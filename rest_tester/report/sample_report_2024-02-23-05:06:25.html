@@ -1,0 +1,1912 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">report_2024-02-23-05:06:25.html</title>
+      <style type="text/css">body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  /* do not increase min-width as some may use split screens */
+  min-width: 800px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+}
+
+h2 {
+  font-size: 16px;
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+a {
+  color: #999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+#environment td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  vertical-align: top;
+}
+#environment tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+#environment ul {
+  margin: 0;
+  padding: 0 20px;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed,
+.passed .col-result {
+  color: green;
+}
+
+span.skipped,
+span.xfailed,
+span.rerun,
+.skipped .col-result,
+.xfailed .col-result,
+.rerun .col-result {
+  color: orange;
+}
+
+span.error,
+span.failed,
+span.xpassed,
+.error .col-result,
+.failed .col-result,
+.xpassed .col-result {
+  color: red;
+}
+
+.col-links__extra {
+  margin-right: 3px;
+}
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+#results-table {
+  border: 1px solid #e6e6e6;
+  color: #999;
+  font-size: 12px;
+  width: 100%;
+}
+#results-table th,
+#results-table td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+#results-table th {
+  font-weight: bold;
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+.logwrapper {
+  max-height: 230px;
+  overflow-y: scroll;
+  background-color: #e6e6e6;
+}
+.logwrapper.expanded {
+  max-height: none;
+}
+.logwrapper.expanded .logexpander:after {
+  content: "collapse [-]";
+}
+.logwrapper .logexpander {
+  z-index: 1;
+  position: sticky;
+  top: 10px;
+  width: max-content;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin: 10px 0 10px calc(100% - 80px);
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+.logwrapper .logexpander:after {
+  content: "expand [+]";
+}
+.logwrapper .logexpander:hover {
+  color: #000;
+  border-color: #000;
+}
+.logwrapper .log {
+  min-height: 40px;
+  position: relative;
+  top: -50px;
+  height: calc(100% + 50px);
+  border: 1px solid #e6e6e6;
+  color: black;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  padding: 5px;
+  padding-right: 80px;
+  white-space: pre-wrap;
+}
+
+div.media {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin: 0 5px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.media-container {
+  display: grid;
+  grid-template-columns: 25px auto 25px;
+  align-items: center;
+  flex: 1 1;
+  overflow: hidden;
+  height: 200px;
+}
+
+.media-container--fullscreen {
+  grid-template-columns: 0px auto 0px;
+}
+
+.media-container__nav--right,
+.media-container__nav--left {
+  text-align: center;
+  cursor: pointer;
+}
+
+.media-container__viewport {
+  cursor: pointer;
+  text-align: center;
+  height: inherit;
+}
+.media-container__viewport img,
+.media-container__viewport video {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.media__name,
+.media__counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 25px;
+  align-items: center;
+}
+
+.collapsible td:not(.col-links) {
+  cursor: pointer;
+}
+.collapsible td:not(.col-links):hover::after {
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.col-result {
+  width: 130px;
+}
+.col-result:hover::after {
+  content: " (hide details)";
+}
+
+.col-result.collapsed:hover::after {
+  content: " (show details)";
+}
+
+#environment-header h2:hover::after {
+  content: " (hide details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#environment-header.collapsed h2:hover::after {
+  content: " (show details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+  cursor: pointer;
+}
+.sortable.desc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: -12.5px;
+  border: 10px solid #4caf50;
+  border-bottom: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.sortable.asc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: 12.5px;
+  border: 10px solid #4caf50;
+  border-top: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.hidden, .summary__reload__button.hidden {
+  display: none;
+}
+
+.summary__data {
+  flex: 0 0 550px;
+}
+.summary__reload {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}
+.summary__reload__button {
+  flex: 0 0 300px;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  background-color: #4caf50;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.summary__reload__button:hover {
+  background-color: #46a049;
+}
+.summary__spacer {
+  flex: 0 0 550px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters,
+.collapse {
+  display: flex;
+  align-items: center;
+}
+.filters button,
+.collapse button {
+  color: #999;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.filters button:hover,
+.collapse button:hover {
+  color: #ccc;
+}
+
+.filter__label {
+  margin-right: 10px;
+}
+
+/******************************
+ * CUSTOM CSS
+ * rest_tester/report/assets/custom.css
+ ******************************/
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  /* do not increase min-width as some may use split screens */
+  min-width: 800px;
+  color: #999;
+}
+
+h1 {
+  font-size: 24px;
+  color: black;
+}
+
+h2 {
+  font-size: 16px;
+  color: black;
+}
+
+p {
+  color: black;
+}
+
+a {
+  color: #999;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+/******************************
+ * SUMMARY INFORMATION
+ ******************************/
+#environment td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  vertical-align: top;
+}
+#environment tr:nth-child(odd) {
+  background-color: #f6f6f6;
+}
+#environment ul {
+  margin: 0;
+  padding: 0 20px;
+}
+
+/******************************
+ * TEST RESULT COLORS
+ ******************************/
+span.passed,
+.passed .col-result {
+  color: green;
+}
+
+span.skipped,
+span.xfailed,
+span.rerun,
+.skipped .col-result,
+.xfailed .col-result,
+.rerun .col-result {
+  color: orange;
+}
+
+span.error,
+span.failed,
+span.xpassed,
+.error .col-result,
+.failed .col-result,
+.xpassed .col-result {
+  color: red;
+}
+
+.col-links__extra {
+  margin-right: 3px;
+}
+
+/******************************
+ * RESULTS TABLE
+ *
+ * 1. Table Layout
+ * 2. Extra
+ * 3. Sorting items
+ *
+ ******************************/
+/*------------------
+ * 1. Table Layout
+ *------------------*/
+#results-table {
+  border: 1px solid #e6e6e6;
+  color: #999;
+  font-size: 12px;
+  width: 100%;
+}
+#results-table th,
+#results-table td {
+  padding: 5px;
+  border: 1px solid #e6e6e6;
+  text-align: left;
+}
+#results-table th {
+  font-weight: bold;
+}
+
+/*------------------
+ * 2. Extra
+ *------------------*/
+.logwrapper {
+  max-height: 230px;
+  overflow-y: scroll;
+  background-color: #e6e6e6;
+}
+.logwrapper.expanded {
+  max-height: none;
+}
+.logwrapper.expanded .logexpander:after {
+  content: "collapse [-]";
+}
+.logwrapper .logexpander {
+  z-index: 1;
+  position: sticky;
+  top: 10px;
+  width: max-content;
+  border: 1px solid;
+  border-radius: 3px;
+  padding: 5px 7px;
+  margin: 10px 0 10px calc(100% - 80px);
+  cursor: pointer;
+  background-color: #e6e6e6;
+}
+.logwrapper .logexpander:after {
+  content: "expand [+]";
+}
+.logwrapper .logexpander:hover {
+  color: #000;
+  border-color: #000;
+}
+.logwrapper .log {
+  min-height: 40px;
+  position: relative;
+  top: -50px;
+  height: calc(100% + 50px);
+  border: 1px solid #e6e6e6;
+  color: black;
+  display: block;
+  font-family: "Courier New", Courier, monospace;
+  padding: 5px;
+  padding-right: 80px;
+  white-space: pre-wrap;
+}
+
+div.media {
+  border: 1px solid #e6e6e6;
+  float: right;
+  height: 240px;
+  margin: 0 5px;
+  overflow: hidden;
+  width: 320px;
+}
+
+.media-container {
+  display: grid;
+  grid-template-columns: 25px auto 25px;
+  align-items: center;
+  flex: 1 1;
+  overflow: hidden;
+  height: 200px;
+}
+
+.media-container--fullscreen {
+  grid-template-columns: 0px auto 0px;
+}
+
+.media-container__nav--right,
+.media-container__nav--left {
+  text-align: center;
+  cursor: pointer;
+}
+
+.media-container__viewport {
+  cursor: pointer;
+  text-align: center;
+  height: inherit;
+}
+.media-container__viewport img,
+.media-container__viewport video {
+  object-fit: cover;
+  width: 100%;
+  max-height: 100%;
+}
+
+.media__name,
+.media__counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex: 0 0 25px;
+  align-items: center;
+}
+
+.collapsible td:not(.col-links) {
+  cursor: pointer;
+}
+.collapsible td:not(.col-links):hover::after {
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+}
+
+.col-result {
+  width: 130px;
+}
+.col-result:hover::after {
+  content: " (hide details)";
+}
+
+.col-result.collapsed:hover::after {
+  content: " (show details)";
+}
+
+#environment-header h2:hover::after {
+  content: " (hide details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#environment-header.collapsed h2:hover::after {
+  content: " (show details)";
+  color: #bbb;
+  font-style: italic;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/*------------------
+ * 3. Sorting items
+ *------------------*/
+.sortable {
+  cursor: pointer;
+}
+.sortable.desc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: -12.5px;
+  border: 10px solid #4caf50;
+  border-bottom: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+.sortable.asc:after {
+  content: " ";
+  position: relative;
+  left: 5px;
+  bottom: 12.5px;
+  border: 10px solid #4caf50;
+  border-top: 0;
+  border-left-color: transparent;
+  border-right-color: transparent;
+}
+
+.hidden, .summary__reload__button.hidden {
+  display: none;
+}
+
+.summary__data {
+  flex: 0 0 550px;
+}
+.summary__reload {
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}
+.summary__reload__button {
+  flex: 0 0 300px;
+  display: flex;
+  color: white;
+  font-weight: bold;
+  background-color: #4caf50;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.summary__reload__button:hover {
+  background-color: #46a049;
+}
+.summary__spacer {
+  flex: 0 0 550px;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filters,
+.collapse {
+  display: flex;
+  align-items: center;
+}
+.filters button,
+.collapse button {
+  color: #999;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.filters button:hover,
+.collapse button:hover {
+  color: #ccc;
+}
+
+.filter__label {
+  margin-right: 10px;
+}
+
+/******************************
+ * CUSTOM CSS
+ * rest_tester/report/assets/custom.css
+ ******************************/
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    /* do not increase min-width as some may use split screens */
+    min-width: 800px;
+    background-color: #000000;
+  }
+  
+  h1 {
+    font-size: 24px;
+    color: #999;
+  }
+  
+  h2 {
+    font-size: 16px;
+    color: #999;
+  }
+  
+  p {
+    color: #999;
+  }
+  
+  a {
+    color: #999;
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  
+  /******************************
+   * SUMMARY INFORMATION
+   ******************************/
+  #environment td {
+    padding: 5px;
+    border: 1px solid #e6e6e6;
+    color: #999;
+    vertical-align: top;
+  }
+  #environment tr:nth-child(odd) {
+    background-color: #000000;
+  }
+  #environment ul {
+    margin: 0;
+    padding: 0 20px;
+  }
+  
+  /******************************
+   * TEST RESULT COLORS
+   ******************************/
+  span.passed,
+  .passed .col-result {
+    color: green;
+  }
+  
+  span.skipped,
+  span.xfailed,
+  span.rerun,
+  .skipped .col-result,
+  .xfailed .col-result,
+  .rerun .col-result {
+    color: orange;
+  }
+  
+  span.error,
+  span.failed,
+  span.xpassed,
+  .error .col-result,
+  .failed .col-result,
+  .xpassed .col-result {
+    color: red;
+  }
+  
+  .col-links__extra {
+    margin-right: 3px;
+  }
+  
+  /******************************
+   * RESULTS TABLE
+   *
+   * 1. Table Layout
+   * 2. Extra
+   * 3. Sorting items
+   *
+   ******************************/
+  /*------------------
+   * 1. Table Layout
+   *------------------*/
+  #results-table {
+    border: 1px solid #e6e6e6;
+    color: #999;
+    font-size: 12px;
+    width: 100%;
+  }
+  #results-table th,
+  #results-table td {
+    padding: 5px;
+    border: 1px solid #e6e6e6;
+    text-align: left;
+  }
+  #results-table th {
+    font-weight: bold;
+  }
+  
+  /*------------------
+   * 2. Extra
+   *------------------*/
+  .logwrapper {
+    max-height: 230px;
+    overflow-y: scroll;
+    background-color: #e6e6e6;
+  }
+  .logwrapper.expanded {
+    max-height: none;
+  }
+  .logwrapper.expanded .logexpander:after {
+    content: "collapse [-]";
+  }
+  .logwrapper .logexpander {
+    z-index: 1;
+    position: sticky;
+    top: 10px;
+    width: max-content;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 5px 7px;
+    margin: 10px 0 10px calc(100% - 80px);
+    cursor: pointer;
+    background-color: #e6e6e6;
+  }
+  .logwrapper .logexpander:after {
+    content: "expand [+]";
+  }
+  .logwrapper .logexpander:hover {
+    color: #000;
+    border-color: #000;
+  }
+  .logwrapper .log {
+    min-height: 40px;
+    position: relative;
+    top: -50px;
+    height: calc(100% + 50px);
+    border: 1px solid #e6e6e6;
+    color: black;
+    display: block;
+    font-family: "Courier New", Courier, monospace;
+    padding: 5px;
+    padding-right: 80px;
+    white-space: pre-wrap;
+  }
+  
+  div.media {
+    border: 1px solid #e6e6e6;
+    float: right;
+    height: 240px;
+    margin: 0 5px;
+    overflow: hidden;
+    width: 320px;
+  }
+  
+  .media-container {
+    display: grid;
+    grid-template-columns: 25px auto 25px;
+    align-items: center;
+    flex: 1 1;
+    overflow: hidden;
+    height: 200px;
+  }
+  
+  .media-container--fullscreen {
+    grid-template-columns: 0px auto 0px;
+  }
+  
+  .media-container__nav--right,
+  .media-container__nav--left {
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .media-container__viewport {
+    cursor: pointer;
+    text-align: center;
+    height: inherit;
+  }
+  .media-container__viewport img,
+  .media-container__viewport video {
+    object-fit: cover;
+    width: 100%;
+    max-height: 100%;
+  }
+  
+  .media__name,
+  .media__counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: 0 0 25px;
+    align-items: center;
+  }
+  
+  .collapsible td:not(.col-links) {
+    cursor: pointer;
+  }
+  .collapsible td:not(.col-links):hover::after {
+    color: #bbb;
+    font-style: italic;
+    cursor: pointer;
+  }
+  
+  .col-result {
+    width: 130px;
+  }
+  .col-result:hover::after {
+    content: " (hide details)";
+  }
+  
+  .col-result.collapsed:hover::after {
+    content: " (show details)";
+  }
+  
+  #environment-header h2:hover::after {
+    content: " (hide details)";
+    color: #bbb;
+    font-style: italic;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  #environment-header.collapsed h2:hover::after {
+    content: " (show details)";
+    color: #bbb;
+    font-style: italic;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  
+  /*------------------
+   * 3. Sorting items
+   *------------------*/
+  .sortable {
+    cursor: pointer;
+  }
+  .sortable.desc:after {
+    content: " ";
+    position: relative;
+    left: 5px;
+    bottom: -12.5px;
+    border: 10px solid #4caf50;
+    border-bottom: 0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+  .sortable.asc:after {
+    content: " ";
+    position: relative;
+    left: 5px;
+    bottom: 12.5px;
+    border: 10px solid #4caf50;
+    border-top: 0;
+    border-left-color: transparent;
+    border-right-color: transparent;
+  }
+  
+  .hidden, .summary__reload__button.hidden {
+    display: none;
+  }
+  
+  .summary__data {
+    flex: 0 0 550px;
+  }
+  .summary__reload {
+    flex: 1 1;
+    display: flex;
+    justify-content: center;
+  }
+  .summary__reload__button {
+    flex: 0 0 300px;
+    display: flex;
+    color: white;
+    font-weight: bold;
+    background-color: #4caf50;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  .summary__reload__button:hover {
+    background-color: #46a049;
+  }
+  .summary__spacer {
+    flex: 0 0 550px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .filters,
+  .collapse {
+    display: flex;
+    align-items: center;
+  }
+  .filters button,
+  .collapse button {
+    color: #999;
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .filters button:hover,
+  .collapse button:hover {
+    color: #ccc;
+  }
+  
+  .filter__label {
+    margin-right: 10px;
+  }
+
+  .chart-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 50vh;
+    width: 40vw;
+    background-color: #000;
+    z-index: 10;
+  }
+      </style>
+    
+  </head>
+  <body>
+    <h1 id="title">report_2024-02-23-05:06:25.html</h1>
+    <p>Report generated on 23-Feb-2024 at 05:06:28 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.1.1</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="6">No results found. Check the filters.</th>
+        </tr>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="6">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left"><</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">></div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+          
+        <script>
+          document.addEventListener('DOMContentLoaded', function() {
+            var event = new CustomEvent('reportRendered');
+            document.dispatchEvent(event);
+        });
+        </script>                               
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+            <div class="chart-container">
+                <canvas id="outcomeChart"></canvas>
+            </div>
+    <script>
+    document.addEventListener('reportRendered', function() {
+    function getTestResults() {
+        var results = {
+            passed: 0,
+            failed: 0,
+            skipped: 0,
+            xfailed: 0,
+            xpassed: 0,
+            error: 0,
+            rerun: 0
+        };
+
+        // Query the summary elements for test counts
+        var summaryElements = document.querySelectorAll('.summary__data .controls .filters span');
+        summaryElements.forEach(function(element) {
+            var textContent = element.textContent;
+            var match = textContent.match(/(\d+)\s+(\w+)/);
+            if (match) {
+                var count = parseInt(match[1], 10);
+                var key = match[2].toLowerCase();
+                if (key in results) {
+                    results[key] = count;
+                }
+            }
+        });
+
+        return results;
+    }
+
+    // Get the test results
+    var testResults = getTestResults();
+
+    // Prepare the data for the pie chart
+    var data = {
+        labels: [],
+        datasets: [{
+            data: [],
+            backgroundColor: [],
+            hoverBackgroundColor: []
+        }]
+    };
+
+    // Define colors for the chart
+    var colors = {
+        'passed': '#5cb85c',
+        'failed': '#d9534f',
+        'skipped': '#f0ad4e',
+        'xfailed': '#5bc0de',
+        'xpassed': '#5bc0de',
+        'error': '#d9534f',
+        'rerun': '#777'
+    };
+
+    // Populate the data object with values from the outcomes
+    Object.keys(testResults).forEach(function(result) {
+        if (testResults[result] > 0) {
+            data.labels.push(result.charAt(0).toUpperCase() + result.slice(1));
+            data.datasets[0].data.push(testResults[result]);
+            data.datasets[0].backgroundColor.push(colors[result]);
+            data.datasets[0].hoverBackgroundColor.push(colors[result]);
+        }
+    });
+
+    // Calculate the total test count
+    var totalTestCount = Object.values(testResults).reduce(function(total, count) {
+        return total + count;
+    }, 0);
+
+    // Plugin to display text in the center of the donut chart
+    Chart.pluginService.register({
+        beforeDraw: function(chart) {
+        if (chart.config.options.elements.center) {
+            // Get ctx from string
+            var ctx = chart.chart.ctx;
+            
+            // Get options from the center object in options
+            var centerConfig = chart.config.options.elements.center;
+            var fontStyle = centerConfig.fontStyle || 'Arial';
+            var txt = centerConfig.text || '';
+            var color = centerConfig.color || '#000';
+            var sidePadding = centerConfig.sidePadding || 20;
+            var sidePaddingCalculated = (sidePadding/100) * (chart.innerRadius * 2);
+            // Start with a base font of 30px
+            ctx.font = "60px " + fontStyle;
+            
+            // Get the width of the string and also the width of the element minus 10 to give it 5px side padding
+            var stringWidth = ctx.measureText(txt).width;
+            var elementWidth = (chart.innerRadius * 2) - sidePaddingCalculated;
+
+            // Find out how much the font can grow in width.
+            var widthRatio = elementWidth / stringWidth;
+            var newFontSize = Math.floor(30 * widthRatio);
+            var elementHeight = (chart.innerRadius * 2);
+
+            // Pick a new font size so it will not be larger than the height of label.
+            var fontSizeToUse = Math.min(newFontSize, elementHeight);
+
+            // Set font settings to draw it correctly.
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            var centerX = ((chart.chartArea.left + chart.chartArea.right) / 2);
+            var centerY = ((chart.chartArea.top + chart.chartArea.bottom) / 2);
+            ctx.font = fontSizeToUse + "px " + fontStyle;
+            ctx.fillStyle = color;
+
+            // Draw text in center
+            ctx.fillText(txt, centerX, centerY);
+        }
+        }
+    });
+
+    // Render the donut chart
+    var ctx = document.getElementById('outcomeChart').getContext('2d');
+    var outcomeChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            position: 'right',
+            labels: {
+            fontColor: '#ffffff'
+            }
+        },
+        title: {
+            display: true,
+            text: 'Test Outcomes',
+            fontColor: '#ffffff'
+        },
+        animation: {
+            animateScale: true,
+            animateRotate: true
+        },
+        cutoutPercentage: 60,
+        elements: {
+            center: {
+            text: totalTestCount.toString(), // Text to display in center
+            color: '#ffffff', // Text color
+            fontStyle: 'Arial', // Font style
+            sidePadding: 20 // Padding around text
+            }
+        }
+        }
+    });});
+    </script>                               
+        
+        </div>
+        <p class="run-count">18 tests took 245 ms.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" />
+            <span class="failed">3 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
+            <span class="passed">15 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled/>
+            <span class="error">0 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
+            <span class="rerun">0 Reruns</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+      </div>
+      <div class="additional-summary postfix">
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th>Test Type</th>
+          <th>Expected</th>
+          <th>Actual</th>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.10.13&#34;, &#34;Platform&#34;: &#34;Linux-6.5.0-18-generic-x86_64-with-glibc2.31&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;7.4.3&#34;, &#34;pluggy&#34;: &#34;1.3.0&#34;}, &#34;Plugins&#34;: {&#34;metadata&#34;: &#34;3.0.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;}}, &#34;tests&#34;: {&#34;rest_tester/main.py::test_api[group1/ - /Feed/GetNewsFeed - statusCode]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,c3RhdHVzQ29kZQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,NDAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group1/ - /Feed/GetNewsFeed&#34;, &#34;result&#34;: &#34;Failed&#34;, &#34;duration&#34;: &#34;1 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group1/ - /Feed/GetNewsFeed&lt;/td&gt;&#34;, &#34;&lt;td&gt;statusCode&lt;/td&gt;&#34;, &#34;&lt;td&gt;400&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;1 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;response = &amp;lt;Response [200]&amp;gt;, test = {&amp;#x27;type&amp;#x27;: &amp;#x27;statusCode&amp;#x27;, &amp;#x27;value&amp;#x27;: 400}\nrequest = &amp;lt;FixtureRequest for &amp;lt;Function test_api[group1/ - /Feed/GetNewsFeed - statusCode]&amp;gt;&amp;gt;\n\n    @pytest.mark.parametrize(&amp;quot;response, test&amp;quot;, test_inputs, ids=test_ids)\n    def test_api(response, test, request):\n        &amp;quot;&amp;quot;&amp;quot;\n        Generic test function to check single json at a time\n        &amp;quot;&amp;quot;&amp;quot;\n        json_response = get_json(response)\n    \n        request.node.add_marker(pytest.mark.test_type(test[&amp;quot;type&amp;quot;]))\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;timeout&amp;quot;:\n            logger.info(f&amp;quot;Testing timeout for {response.url}&amp;quot;)\n            expected_timeout = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_timeout&amp;#x27;]\n            if expected_timeout:\n                request.node.add_marker(pytest.mark.expected(str(expected_timeout)))  # Replace with actual expected value logic\n                request.node.add_marker(pytest.mark.actual(str(response.elapsed.total_seconds())))\n                assert (\n                    response.elapsed.total_seconds() &amp;lt;= expected_timeout\n                ), f&amp;quot;Expected timeout: {expected_timeout}, Actual timeout: {response.elapsed.total_seconds()} Response: {json_response}&amp;quot;\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;statusCode&amp;quot;:\n            logger.info(f&amp;quot;Testing status code for {response.url} &amp;quot;)\n            expected_status_code = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_status_code&amp;#x27;]\n            if expected_status_code:\n                request.node.add_marker(pytest.mark.expected(str(expected_status_code)))\n                request.node.add_marker(pytest.mark.actual(str(response.status_code)))\n&amp;gt;               assert (\n                    response.status_code == expected_status_code\n                ), f&amp;quot;Expected status code: {expected_status_code}, Actual status code: {response.status_code} Response: {json_response}&amp;quot;\nE               AssertionError: Expected status code: 400, Actual status code: 200 Response: {&amp;#x27;page&amp;#x27;: 1, &amp;#x27;per_page&amp;#x27;: 10, &amp;#x27;totalrecord&amp;#x27;: 1110, &amp;#x27;total_pages&amp;#x27;: 111, &amp;#x27;data&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4020, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;1234&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Dubey Tola, Uttar Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-24T06:18:05.9298687&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 18905, &amp;#x27;name&amp;#x27;: &amp;#x27;Danish Rajial&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 1}, {&amp;#x27;id&amp;#x27;: 4019, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;NYC VEIW&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Dharamshala, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-23T09:55:34.3390842&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 18879, &amp;#x27;name&amp;#x27;: &amp;#x27;skylyt&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 4}, {&amp;#x27;id&amp;#x27;: 4018, &amp;#x27;title&amp;#x27;: &amp;#x27;LOVE SHIMLA&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;shimla&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4787, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/cf012b8a-723e-4e5e-b30e-b346b4b06541.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-21T12:28:13.5844596&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T12:28:13.5844591&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 3}, {&amp;#x27;id&amp;#x27;: 4017, &amp;#x27;title&amp;#x27;: &amp;#x27;my new pic&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;nyc veiw&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4786, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/46f4dccd-09dd-4961-959a-69446679196a.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-21T12:25:40.8987613&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T12:25:40.898761&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4016, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;nice place&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Palampur, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4785, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/https://www.youtube.com/watch?v=LGYZ6BqKXkM&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-21T09:11:40.4072126&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T09:11:40.4072125&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 10}, {&amp;#x27;id&amp;#x27;: 4015, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;GDFNH&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Noida, Uttar Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T06:33:34.0443214&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4014, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;LOVE TRAVEL&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Noida, Uttar Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T06:31:43.2257966&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4013, &amp;#x27;title&amp;#x27;: &amp;#x27;LOVE SHIMLA&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4784, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/58101bb6-c95f-461b-8d7f-5fd407c6cc14.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-18T12:10:53.874409&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-18T12:10:53.8744081&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4012, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;SNOW TIME&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-18T10:41:16.0650027&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 10}, {&amp;#x27;id&amp;#x27;: 4011, &amp;#x27;title&amp;#x27;: &amp;#x27;Lorem Ipsum&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed lacus elit. Proin pharetra sapien a ultricies feugiat. Pellentesque laoreet sem id urna venenatis commodo. Mauris laoreet magna vel orci interdum finibus. Phasellus nec consectetur libero. Donec ornare elit id eros ullamcorper, vel accumsan ante aliquet. &amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;London, UK&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4779, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/5a0b3b83-1adb-4fa4-8640-b6383eb375e0.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153083&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4780, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/f44e157a-968d-411b-b0a3-da1815f280f5.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153087&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4781, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/34eebc7c-ada5-4708-ad23-24da5235c7b9.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153091&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4782, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/b9df762b-cf84-4f2a-b4cf-2fed15828530.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153094&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4783, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/1d6ba701-9695-45e9-ad08-f49299a318b0.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153095&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8152957&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 4}]}\nE               assert 200 == 400\nE                +  where 200 = &amp;lt;Response [200]&amp;gt;.status_code\n\nrest_tester/main.py:44: AssertionError\n\n------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:39 Testing status code for http://restapi.adequateshop.com/api/Feed/GetNewsFeed\n\n&#34;}], &#34;rest_tester/main.py::test_api[group1/ - /Feed/GetNewsFeed - timeout]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,dGltZW91dA==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MTA=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MC4xNjQzMDU=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group1/ - /Feed/GetNewsFeed&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;1 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group1/ - /Feed/GetNewsFeed&lt;/td&gt;&#34;, &#34;&lt;td&gt;timeout&lt;/td&gt;&#34;, &#34;&lt;td&gt;10&lt;/td&gt;&#34;, &#34;&lt;td&gt;0.164305&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;1 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:29 Testing timeout for http://restapi.adequateshop.com/api/Feed/GetNewsFeed\n\n&#34;}], &#34;rest_tester/main.py::test_api[group1/ - /Feed/GetNewsFeed - jsonSchema]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,anNvblNjaGVtYQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyIkZGVmcyI6IHsiTXVsdGlNZWRpYUl0ZW0iOiB7InByb3BlcnRpZXMiOiB7ImlkIjogeyJ0aXRsZSI6ICJJZCIsICJ0eXBlIjogImludGVnZXIifSwgInRpdGxlIjogeyJ0aXRsZSI6ICJUaXRsZSIsICJ0eXBlIjogIm51bGwifSwgIm5hbWUiOiB7InRpdGxlIjogIk5hbWUiLCAidHlwZSI6ICJzdHJpbmcifSwgImRlc2NyaXB0aW9uIjogeyJ0aXRsZSI6ICJEZXNjcmlwdGlvbiIsICJ0eXBlIjogIm51bGwifSwgInVybCI6IHsidGl0bGUiOiAiVXJsIiwgInR5cGUiOiAic3RyaW5nIn0sICJjcmVhdGVhdCI6IHsidGl0bGUiOiAiQ3JlYXRlYXQiLCAidHlwZSI6ICJzdHJpbmcifX0sICJyZXF1aXJlZCI6IFsiaWQiLCAidGl0bGUiLCAibmFtZSIsICJkZXNjcmlwdGlvbiIsICJ1cmwiLCAiY3JlYXRlYXQiXSwgInRpdGxlIjogIk11bHRpTWVkaWFJdGVtIiwgInR5cGUiOiAib2JqZWN0In0sICJOZXdzRmVlZCI6IHsicHJvcGVydGllcyI6IHsiaWQiOiB7InRpdGxlIjogIklkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidGl0bGUiOiB7ImFueU9mIjogW3sidHlwZSI6ICJzdHJpbmcifSwgeyJ0eXBlIjogIm51bGwifV0sICJkZWZhdWx0IjogbnVsbCwgInRpdGxlIjogIlRpdGxlIn0sICJkZXNjcmlwdGlvbiI6IHsiYW55T2YiOiBbeyJ0eXBlIjogInN0cmluZyJ9LCB7InR5cGUiOiAibnVsbCJ9XSwgImRlZmF1bHQiOiBudWxsLCAidGl0bGUiOiAiRGVzY3JpcHRpb24ifSwgImxvY2F0aW9uIjogeyJ0aXRsZSI6ICJMb2NhdGlvbiIsICJ0eXBlIjogInN0cmluZyJ9LCAibXVsdGlNZWRpYSI6IHsiaXRlbXMiOiB7IiRyZWYiOiAiIy8kZGVmcy9NdWx0aU1lZGlhSXRlbSJ9LCAidGl0bGUiOiAiTXVsdGltZWRpYSIsICJ0eXBlIjogImFycmF5In0sICJjcmVhdGVkYXQiOiB7InRpdGxlIjogIkNyZWF0ZWRhdCIsICJ0eXBlIjogInN0cmluZyJ9LCAidXNlciI6IHsiJHJlZiI6ICIjLyRkZWZzL05ld3NGZWVkVXNlciJ9LCAiY29tbWVudENvdW50IjogeyJ0aXRsZSI6ICJDb21tZW50Y291bnQiLCAidHlwZSI6ICJpbnRlZ2VyIn19LCAicmVxdWlyZWQiOiBbImlkIiwgImxvY2F0aW9uIiwgIm11bHRpTWVkaWEiLCAiY3JlYXRlZGF0IiwgInVzZXIiLCAiY29tbWVudENvdW50Il0sICJ0aXRsZSI6ICJOZXdzRmVlZCIsICJ0eXBlIjogIm9iamVjdCJ9LCAiTmV3c0ZlZWRVc2VyIjogeyJwcm9wZXJ0aWVzIjogeyJ1c2VyaWQiOiB7InRpdGxlIjogIlVzZXJpZCIsICJ0eXBlIjogImludGVnZXIifSwgIm5hbWUiOiB7InRpdGxlIjogIk5hbWUiLCAidHlwZSI6ICJzdHJpbmcifSwgInByb2ZpbGVwaWN0dXJlIjogeyJ0aXRsZSI6ICJQcm9maWxlcGljdHVyZSIsICJ0eXBlIjogInN0cmluZyJ9fSwgInJlcXVpcmVkIjogWyJ1c2VyaWQiLCAibmFtZSIsICJwcm9maWxlcGljdHVyZSJdLCAidGl0bGUiOiAiTmV3c0ZlZWRVc2VyIiwgInR5cGUiOiAib2JqZWN0In19LCAicHJvcGVydGllcyI6IHsicGFnZSI6IHsidGl0bGUiOiAiUGFnZSIsICJ0eXBlIjogImludGVnZXIifSwgInBlcl9wYWdlIjogeyJ0aXRsZSI6ICJQZXIgUGFnZSIsICJ0eXBlIjogImludGVnZXIifSwgInRvdGFscmVjb3JkIjogeyJ0aXRsZSI6ICJUb3RhbHJlY29yZCIsICJ0eXBlIjogImludGVnZXIifSwgInRvdGFsX3BhZ2VzIjogeyJ0aXRsZSI6ICJUb3RhbCBQYWdlcyIsICJ0eXBlIjogInN0cmluZyJ9LCAiZGF0YSI6IHsiaXRlbXMiOiB7IiRyZWYiOiAiIy8kZGVmcy9OZXdzRmVlZCJ9LCAidGl0bGUiOiAiRGF0YSIsICJ0eXBlIjogImFycmF5In19LCAicmVxdWlyZWQiOiBbInBhZ2UiLCAicGVyX3BhZ2UiLCAidG90YWxyZWNvcmQiLCAidG90YWxfcGFnZXMiLCAiZGF0YSJdLCAidGl0bGUiOiAiTmV3c0ZlZWRzIiwgInR5cGUiOiAib2JqZWN0In0=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyIkZGVmcyI6IHsiRGF0dW0iOiB7InByb3BlcnRpZXMiOiB7ImlkIjogeyJ0aXRsZSI6ICJJZCIsICJ0eXBlIjogImludGVnZXIifSwgInRpdGxlIjogeyJhbnlPZiI6IFt7InR5cGUiOiAic3RyaW5nIn0sIHsidHlwZSI6ICJudWxsIn1dLCAiZGVmYXVsdCI6IG51bGwsICJ0aXRsZSI6ICJUaXRsZSJ9LCAiZGVzY3JpcHRpb24iOiB7ImFueU9mIjogW3sidHlwZSI6ICJzdHJpbmcifSwgeyJ0eXBlIjogIm51bGwifV0sICJkZWZhdWx0IjogbnVsbCwgInRpdGxlIjogIkRlc2NyaXB0aW9uIn0sICJsb2NhdGlvbiI6IHsidGl0bGUiOiAiTG9jYXRpb24iLCAidHlwZSI6ICJzdHJpbmcifSwgIm11bHRpTWVkaWEiOiB7Iml0ZW1zIjogeyIkcmVmIjogIiMvJGRlZnMvTXVsdGlNZWRpYUl0ZW0ifSwgInRpdGxlIjogIk11bHRpbWVkaWEiLCAidHlwZSI6ICJhcnJheSJ9LCAiY3JlYXRlZGF0IjogeyJ0aXRsZSI6ICJDcmVhdGVkYXQiLCAidHlwZSI6ICJzdHJpbmcifSwgInVzZXIiOiB7IiRyZWYiOiAiIy8kZGVmcy9Vc2VyIn0sICJjb21tZW50Q291bnQiOiB7InRpdGxlIjogIkNvbW1lbnRjb3VudCIsICJ0eXBlIjogImludGVnZXIifX0sICJyZXF1aXJlZCI6IFsiaWQiLCAibG9jYXRpb24iLCAibXVsdGlNZWRpYSIsICJjcmVhdGVkYXQiLCAidXNlciIsICJjb21tZW50Q291bnQiXSwgInRpdGxlIjogIkRhdHVtIiwgInR5cGUiOiAib2JqZWN0In0sICJNdWx0aU1lZGlhSXRlbSI6IHsicHJvcGVydGllcyI6IHsiaWQiOiB7InRpdGxlIjogIklkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidGl0bGUiOiB7InRpdGxlIjogIlRpdGxlIiwgInR5cGUiOiAibnVsbCJ9LCAibmFtZSI6IHsidGl0bGUiOiAiTmFtZSIsICJ0eXBlIjogInN0cmluZyJ9LCAiZGVzY3JpcHRpb24iOiB7InRpdGxlIjogIkRlc2NyaXB0aW9uIiwgInR5cGUiOiAibnVsbCJ9LCAidXJsIjogeyJ0aXRsZSI6ICJVcmwiLCAidHlwZSI6ICJzdHJpbmcifSwgImNyZWF0ZWF0IjogeyJ0aXRsZSI6ICJDcmVhdGVhdCIsICJ0eXBlIjogInN0cmluZyJ9fSwgInJlcXVpcmVkIjogWyJpZCIsICJ0aXRsZSIsICJuYW1lIiwgImRlc2NyaXB0aW9uIiwgInVybCIsICJjcmVhdGVhdCJdLCAidGl0bGUiOiAiTXVsdGlNZWRpYUl0ZW0iLCAidHlwZSI6ICJvYmplY3QifSwgIlVzZXIiOiB7InByb3BlcnRpZXMiOiB7InVzZXJpZCI6IHsidGl0bGUiOiAiVXNlcmlkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAibmFtZSI6IHsidGl0bGUiOiAiTmFtZSIsICJ0eXBlIjogInN0cmluZyJ9LCAicHJvZmlsZXBpY3R1cmUiOiB7InRpdGxlIjogIlByb2ZpbGVwaWN0dXJlIiwgInR5cGUiOiAic3RyaW5nIn19LCAicmVxdWlyZWQiOiBbInVzZXJpZCIsICJuYW1lIiwgInByb2ZpbGVwaWN0dXJlIl0sICJ0aXRsZSI6ICJVc2VyIiwgInR5cGUiOiAib2JqZWN0In19LCAicHJvcGVydGllcyI6IHsicGFnZSI6IHsidGl0bGUiOiAiUGFnZSIsICJ0eXBlIjogImludGVnZXIifSwgInBlcl9wYWdlIjogeyJ0aXRsZSI6ICJQZXIgUGFnZSIsICJ0eXBlIjogImludGVnZXIifSwgInRvdGFscmVjb3JkIjogeyJ0aXRsZSI6ICJUb3RhbHJlY29yZCIsICJ0eXBlIjogImludGVnZXIifSwgInRvdGFsX3BhZ2VzIjogeyJ0aXRsZSI6ICJUb3RhbCBQYWdlcyIsICJ0eXBlIjogImludGVnZXIifSwgImRhdGEiOiB7Iml0ZW1zIjogeyIkcmVmIjogIiMvJGRlZnMvRGF0dW0ifSwgInRpdGxlIjogIkRhdGEiLCAidHlwZSI6ICJhcnJheSJ9fSwgInJlcXVpcmVkIjogWyJwYWdlIiwgInBlcl9wYWdlIiwgInRvdGFscmVjb3JkIiwgInRvdGFsX3BhZ2VzIiwgImRhdGEiXSwgInRpdGxlIjogIk5ld3NGZWVkcyIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group1/ - /Feed/GetNewsFeed&#34;, &#34;result&#34;: &#34;Failed&#34;, &#34;duration&#34;: &#34;218 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group1/ - /Feed/GetNewsFeed&lt;/td&gt;&#34;, &#34;&lt;td&gt;jsonSchema&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;$defs\&#34;: {\&#34;MultiMediaItem\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;title\&#34;: {\&#34;title\&#34;: \&#34;Title\&#34;, \&#34;type\&#34;: \&#34;null\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;description\&#34;: {\&#34;title\&#34;: \&#34;Description\&#34;, \&#34;type\&#34;: \&#34;null\&#34;}, \&#34;url\&#34;: {\&#34;title\&#34;: \&#34;Url\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createat\&#34;: {\&#34;title\&#34;: \&#34;Createat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;title\&#34;, \&#34;name\&#34;, \&#34;description\&#34;, \&#34;url\&#34;, \&#34;createat\&#34;], \&#34;title\&#34;: \&#34;MultiMediaItem\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}, \&#34;NewsFeed\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;title\&#34;: {\&#34;anyOf\&#34;: [{\&#34;type\&#34;: \&#34;string\&#34;}, {\&#34;type\&#34;: \&#34;null\&#34;}], \&#34;default\&#34;: null, \&#34;title\&#34;: \&#34;Title\&#34;}, \&#34;description\&#34;: {\&#34;anyOf\&#34;: [{\&#34;type\&#34;: \&#34;string\&#34;}, {\&#34;type\&#34;: \&#34;null\&#34;}], \&#34;default\&#34;: null, \&#34;title\&#34;: \&#34;Description\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;multiMedia\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/MultiMediaItem\&#34;}, \&#34;title\&#34;: \&#34;Multimedia\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;user\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/NewsFeedUser\&#34;}, \&#34;commentCount\&#34;: {\&#34;title\&#34;: \&#34;Commentcount\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;location\&#34;, \&#34;multiMedia\&#34;, \&#34;createdat\&#34;, \&#34;user\&#34;, \&#34;commentCount\&#34;], \&#34;title\&#34;: \&#34;NewsFeed\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}, \&#34;NewsFeedUser\&#34;: {\&#34;properties\&#34;: {\&#34;userid\&#34;: {\&#34;title\&#34;: \&#34;Userid\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;userid\&#34;, \&#34;name\&#34;, \&#34;profilepicture\&#34;], \&#34;title\&#34;: \&#34;NewsFeedUser\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}}, \&#34;properties\&#34;: {\&#34;page\&#34;: {\&#34;title\&#34;: \&#34;Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;per_page\&#34;: {\&#34;title\&#34;: \&#34;Per Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;totalrecord\&#34;: {\&#34;title\&#34;: \&#34;Totalrecord\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;total_pages\&#34;: {\&#34;title\&#34;: \&#34;Total Pages\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;data\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/NewsFeed\&#34;}, \&#34;title\&#34;: \&#34;Data\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}}, \&#34;required\&#34;: [\&#34;page\&#34;, \&#34;per_page\&#34;, \&#34;totalrecord\&#34;, \&#34;total_pages\&#34;, \&#34;data\&#34;], \&#34;title\&#34;: \&#34;NewsFeeds\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;$defs\&#34;: {\&#34;Datum\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;title\&#34;: {\&#34;anyOf\&#34;: [{\&#34;type\&#34;: \&#34;string\&#34;}, {\&#34;type\&#34;: \&#34;null\&#34;}], \&#34;default\&#34;: null, \&#34;title\&#34;: \&#34;Title\&#34;}, \&#34;description\&#34;: {\&#34;anyOf\&#34;: [{\&#34;type\&#34;: \&#34;string\&#34;}, {\&#34;type\&#34;: \&#34;null\&#34;}], \&#34;default\&#34;: null, \&#34;title\&#34;: \&#34;Description\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;multiMedia\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/MultiMediaItem\&#34;}, \&#34;title\&#34;: \&#34;Multimedia\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;user\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/User\&#34;}, \&#34;commentCount\&#34;: {\&#34;title\&#34;: \&#34;Commentcount\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;location\&#34;, \&#34;multiMedia\&#34;, \&#34;createdat\&#34;, \&#34;user\&#34;, \&#34;commentCount\&#34;], \&#34;title\&#34;: \&#34;Datum\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}, \&#34;MultiMediaItem\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;title\&#34;: {\&#34;title\&#34;: \&#34;Title\&#34;, \&#34;type\&#34;: \&#34;null\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;description\&#34;: {\&#34;title\&#34;: \&#34;Description\&#34;, \&#34;type\&#34;: \&#34;null\&#34;}, \&#34;url\&#34;: {\&#34;title\&#34;: \&#34;Url\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createat\&#34;: {\&#34;title\&#34;: \&#34;Createat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;title\&#34;, \&#34;name\&#34;, \&#34;description\&#34;, \&#34;url\&#34;, \&#34;createat\&#34;], \&#34;title\&#34;: \&#34;MultiMediaItem\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}, \&#34;User\&#34;: {\&#34;properties\&#34;: {\&#34;userid\&#34;: {\&#34;title\&#34;: \&#34;Userid\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;userid\&#34;, \&#34;name\&#34;, \&#34;profilepicture\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}}, \&#34;properties\&#34;: {\&#34;page\&#34;: {\&#34;title\&#34;: \&#34;Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;per_page\&#34;: {\&#34;title\&#34;: \&#34;Per Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;totalrecord\&#34;: {\&#34;title\&#34;: \&#34;Totalrecord\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;total_pages\&#34;: {\&#34;title\&#34;: \&#34;Total Pages\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;data\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/Datum\&#34;}, \&#34;title\&#34;: \&#34;Data\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}}, \&#34;required\&#34;: [\&#34;page\&#34;, \&#34;per_page\&#34;, \&#34;totalrecord\&#34;, \&#34;total_pages\&#34;, \&#34;data\&#34;], \&#34;title\&#34;: \&#34;NewsFeeds\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;218 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;response = &amp;lt;Response [200]&amp;gt;, test = {&amp;#x27;type&amp;#x27;: &amp;#x27;jsonSchema&amp;#x27;, &amp;#x27;value&amp;#x27;: &amp;#x27;NewsFeeds&amp;#x27;}\nrequest = &amp;lt;FixtureRequest for &amp;lt;Function test_api[group1/ - /Feed/GetNewsFeed - jsonSchema]&amp;gt;&amp;gt;\n\n    @pytest.mark.parametrize(&amp;quot;response, test&amp;quot;, test_inputs, ids=test_ids)\n    def test_api(response, test, request):\n        &amp;quot;&amp;quot;&amp;quot;\n        Generic test function to check single json at a time\n        &amp;quot;&amp;quot;&amp;quot;\n        json_response = get_json(response)\n    \n        request.node.add_marker(pytest.mark.test_type(test[&amp;quot;type&amp;quot;]))\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;timeout&amp;quot;:\n            logger.info(f&amp;quot;Testing timeout for {response.url}&amp;quot;)\n            expected_timeout = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_timeout&amp;#x27;]\n            if expected_timeout:\n                request.node.add_marker(pytest.mark.expected(str(expected_timeout)))  # Replace with actual expected value logic\n                request.node.add_marker(pytest.mark.actual(str(response.elapsed.total_seconds())))\n                assert (\n                    response.elapsed.total_seconds() &amp;lt;= expected_timeout\n                ), f&amp;quot;Expected timeout: {expected_timeout}, Actual timeout: {response.elapsed.total_seconds()} Response: {json_response}&amp;quot;\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;statusCode&amp;quot;:\n            logger.info(f&amp;quot;Testing status code for {response.url} &amp;quot;)\n            expected_status_code = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_status_code&amp;#x27;]\n            if expected_status_code:\n                request.node.add_marker(pytest.mark.expected(str(expected_status_code)))\n                request.node.add_marker(pytest.mark.actual(str(response.status_code)))\n                assert (\n                    response.status_code == expected_status_code\n                ), f&amp;quot;Expected status code: {expected_status_code}, Actual status code: {response.status_code} Response: {json_response}&amp;quot;\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;jsonSchema&amp;quot;:\n            logger.info(f&amp;quot;Testing json schema for {response.url} &amp;quot;)\n            if isinstance(test[&amp;quot;value&amp;quot;], str):\n                class_name = test[&amp;quot;value&amp;quot;]\n                class_ = get_class(class_name, &amp;quot;rest_tester.tests.responses&amp;quot;)\n            expected_json_schema = class_.model_json_schema() if class_ else test[&amp;quot;value&amp;quot;]\n            if expected_json_schema and json_response:\n                request.node.add_marker(pytest.mark.expected(json.dumps(expected_json_schema)))\n                try:\n&amp;gt;                   jsonschema.validate(json_response, expected_json_schema)\n\nrest_tester/main.py:57: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\ninstance = {&amp;#x27;data&amp;#x27;: [{&amp;#x27;commentCount&amp;#x27;: 1, &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-24T06:18:05.9298687&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;1234&amp;#x27;, &amp;#x27;id&amp;#x27;: 4020, ...}, {&amp;#x27;c...T06:33:34.0443214&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;GDFNH&amp;#x27;, &amp;#x27;id&amp;#x27;: 4015, ...}, ...], &amp;#x27;page&amp;#x27;: 1, &amp;#x27;per_page&amp;#x27;: 10, &amp;#x27;total_pages&amp;#x27;: 111, ...}\nschema = {&amp;#x27;$defs&amp;#x27;: {&amp;#x27;MultiMediaItem&amp;#x27;: {&amp;#x27;properties&amp;#x27;: {&amp;#x27;createat&amp;#x27;: {&amp;#x27;title&amp;#x27;: &amp;#x27;Createat&amp;#x27;, &amp;#x27;type&amp;#x27;: &amp;#x27;string&amp;#x27;}, &amp;#x27;description&amp;#x27;: {&amp;#x27;tit...e&amp;#x27;: &amp;#x27;string&amp;#x27;}, ...}, &amp;#x27;required&amp;#x27;: [&amp;#x27;page&amp;#x27;, &amp;#x27;per_page&amp;#x27;, &amp;#x27;totalrecord&amp;#x27;, &amp;#x27;total_pages&amp;#x27;, &amp;#x27;data&amp;#x27;], &amp;#x27;title&amp;#x27;: &amp;#x27;NewsFeeds&amp;#x27;, ...}\ncls = &amp;lt;class &amp;#x27;jsonschema.validators.Draft202012Validator&amp;#x27;&amp;gt;, args = (), kwargs = {}\nvalidator = Draft202012Validator(schema={&amp;#x27;$defs&amp;#x27;: {&amp;#x27;MultiMediaItem&amp;#x27;: {&amp;#x27;properties&amp;#x27;: {&amp;#x27;createat&amp;#x27;: {&amp;#x27;title&amp;#x27;: &amp;#x27;Createat&amp;#x27;, &amp;#x27;type&amp;#x27;: &amp;#x27;st...required&amp;#x27;: [&amp;#x27;page&amp;#x27;, &amp;#x27;per_page&amp;#x27;, &amp;#x27;totalrecord&amp;#x27;, &amp;#x27;total_pages&amp;#x27;, &amp;#x27;data&amp;#x27;], &amp;#x27;title&amp;#x27;: &amp;#x27;NewsFeeds&amp;#x27;, ...}, format_checker=None)\nerror = &amp;lt;ValidationError: &amp;quot;111 is not of type &amp;#x27;string&amp;#x27;&amp;quot;&amp;gt;\n\n    def validate(instance, schema, cls=None, *args, **kwargs):  # noqa: D417\n        &amp;quot;&amp;quot;&amp;quot;\n        Validate an instance under the given schema.\n    \n            &amp;gt;&amp;gt;&amp;gt; validate([2, 3, 4], {&amp;quot;maxItems&amp;quot;: 2})\n            Traceback (most recent call last):\n                ...\n            ValidationError: [2, 3, 4] is too long\n    \n        :func:`~jsonschema.validators.validate` will first verify that the\n        provided schema is itself valid, since not doing so can lead to less\n        obvious error messages and fail in less obvious or consistent ways.\n    \n        If you know you have a valid schema already, especially\n        if you intend to validate multiple instances with\n        the same schema, you likely would prefer using the\n        `jsonschema.protocols.Validator.validate` method directly on a\n        specific validator (e.g. ``Draft202012Validator.validate``).\n    \n    \n        Arguments:\n    \n            instance:\n    \n                The instance to validate\n    \n            schema:\n    \n                The schema to validate with\n    \n            cls (jsonschema.protocols.Validator):\n    \n                The class that will be used to validate the instance.\n    \n        If the ``cls`` argument is not provided, two things will happen\n        in accordance with the specification. First, if the schema has a\n        :kw:`$schema` keyword containing a known meta-schema [#]_ then the\n        proper validator will be used. The specification recommends that\n        all schemas contain :kw:`$schema` properties for this reason. If no\n        :kw:`$schema` property is found, the default validator class is the\n        latest released draft.\n    \n        Any other provided positional and keyword arguments will be passed\n        on when instantiating the ``cls``.\n    \n        Raises:\n    \n            `jsonschema.exceptions.ValidationError`:\n    \n                if the instance is invalid\n    \n            `jsonschema.exceptions.SchemaError`:\n    \n                if the schema itself is invalid\n    \n        .. rubric:: Footnotes\n        .. [#] known by a validator registered with\n            `jsonschema.validators.validates`\n        &amp;quot;&amp;quot;&amp;quot;\n        if cls is None:\n            cls = validator_for(schema)\n    \n        cls.check_schema(schema)\n        validator = cls(schema, *args, **kwargs)\n        error = exceptions.best_match(validator.iter_errors(instance))\n        if error is not None:\n&amp;gt;           raise error\nE           jsonschema.exceptions.ValidationError: 111 is not of type &amp;#x27;string&amp;#x27;\nE           \nE           Failed validating &amp;#x27;type&amp;#x27; in schema[&amp;#x27;properties&amp;#x27;][&amp;#x27;total_pages&amp;#x27;]:\nE               {&amp;#x27;title&amp;#x27;: &amp;#x27;Total Pages&amp;#x27;, &amp;#x27;type&amp;#x27;: &amp;#x27;string&amp;#x27;}\nE           \nE           On instance[&amp;#x27;total_pages&amp;#x27;]:\nE               111\n\n/root/.cache/pypoetry/virtualenvs/python-api-testing-framework-9TtSrW0h-py3.10/lib/python3.10/site-packages/jsonschema/validators.py:1308: ValidationError\n\nDuring handling of the above exception, another exception occurred:\n\nresponse = &amp;lt;Response [200]&amp;gt;, test = {&amp;#x27;type&amp;#x27;: &amp;#x27;jsonSchema&amp;#x27;, &amp;#x27;value&amp;#x27;: &amp;#x27;NewsFeeds&amp;#x27;}\nrequest = &amp;lt;FixtureRequest for &amp;lt;Function test_api[group1/ - /Feed/GetNewsFeed - jsonSchema]&amp;gt;&amp;gt;\n\n    @pytest.mark.parametrize(&amp;quot;response, test&amp;quot;, test_inputs, ids=test_ids)\n    def test_api(response, test, request):\n        &amp;quot;&amp;quot;&amp;quot;\n        Generic test function to check single json at a time\n        &amp;quot;&amp;quot;&amp;quot;\n        json_response = get_json(response)\n    \n        request.node.add_marker(pytest.mark.test_type(test[&amp;quot;type&amp;quot;]))\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;timeout&amp;quot;:\n            logger.info(f&amp;quot;Testing timeout for {response.url}&amp;quot;)\n            expected_timeout = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_timeout&amp;#x27;]\n            if expected_timeout:\n                request.node.add_marker(pytest.mark.expected(str(expected_timeout)))  # Replace with actual expected value logic\n                request.node.add_marker(pytest.mark.actual(str(response.elapsed.total_seconds())))\n                assert (\n                    response.elapsed.total_seconds() &amp;lt;= expected_timeout\n                ), f&amp;quot;Expected timeout: {expected_timeout}, Actual timeout: {response.elapsed.total_seconds()} Response: {json_response}&amp;quot;\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;statusCode&amp;quot;:\n            logger.info(f&amp;quot;Testing status code for {response.url} &amp;quot;)\n            expected_status_code = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_status_code&amp;#x27;]\n            if expected_status_code:\n                request.node.add_marker(pytest.mark.expected(str(expected_status_code)))\n                request.node.add_marker(pytest.mark.actual(str(response.status_code)))\n                assert (\n                    response.status_code == expected_status_code\n                ), f&amp;quot;Expected status code: {expected_status_code}, Actual status code: {response.status_code} Response: {json_response}&amp;quot;\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;jsonSchema&amp;quot;:\n            logger.info(f&amp;quot;Testing json schema for {response.url} &amp;quot;)\n            if isinstance(test[&amp;quot;value&amp;quot;], str):\n                class_name = test[&amp;quot;value&amp;quot;]\n                class_ = get_class(class_name, &amp;quot;rest_tester.tests.responses&amp;quot;)\n            expected_json_schema = class_.model_json_schema() if class_ else test[&amp;quot;value&amp;quot;]\n            if expected_json_schema and json_response:\n                request.node.add_marker(pytest.mark.expected(json.dumps(expected_json_schema)))\n                try:\n                    jsonschema.validate(json_response, expected_json_schema)\n                    request.node.add_marker(pytest.mark.actual(json.dumps(expected_json_schema)))\n                except jsonschema.exceptions.ValidationError as e:\n                    request.node.add_marker(pytest.mark.actual(json.dumps(get_json_schema(json_response, class_name))))\n&amp;gt;                   pytest.fail(f&amp;quot;JSON Schema validation failed: {str(e)}\\n Response: {json_response}&amp;quot;)\nE                   Failed: JSON Schema validation failed: 111 is not of type &amp;#x27;string&amp;#x27;\nE                   \nE                   Failed validating &amp;#x27;type&amp;#x27; in schema[&amp;#x27;properties&amp;#x27;][&amp;#x27;total_pages&amp;#x27;]:\nE                       {&amp;#x27;title&amp;#x27;: &amp;#x27;Total Pages&amp;#x27;, &amp;#x27;type&amp;#x27;: &amp;#x27;string&amp;#x27;}\nE                   \nE                   On instance[&amp;#x27;total_pages&amp;#x27;]:\nE                       111\nE                    Response: {&amp;#x27;page&amp;#x27;: 1, &amp;#x27;per_page&amp;#x27;: 10, &amp;#x27;totalrecord&amp;#x27;: 1110, &amp;#x27;total_pages&amp;#x27;: 111, &amp;#x27;data&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4020, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;1234&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Dubey Tola, Uttar Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-24T06:18:05.9298687&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 18905, &amp;#x27;name&amp;#x27;: &amp;#x27;Danish Rajial&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 1}, {&amp;#x27;id&amp;#x27;: 4019, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;NYC VEIW&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Dharamshala, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-23T09:55:34.3390842&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 18879, &amp;#x27;name&amp;#x27;: &amp;#x27;skylyt&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 4}, {&amp;#x27;id&amp;#x27;: 4018, &amp;#x27;title&amp;#x27;: &amp;#x27;LOVE SHIMLA&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;shimla&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4787, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/cf012b8a-723e-4e5e-b30e-b346b4b06541.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-21T12:28:13.5844596&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T12:28:13.5844591&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 3}, {&amp;#x27;id&amp;#x27;: 4017, &amp;#x27;title&amp;#x27;: &amp;#x27;my new pic&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;nyc veiw&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4786, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/46f4dccd-09dd-4961-959a-69446679196a.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-21T12:25:40.8987613&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T12:25:40.898761&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4016, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;nice place&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Palampur, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4785, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/https://www.youtube.com/watch?v=LGYZ6BqKXkM&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-21T09:11:40.4072126&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T09:11:40.4072125&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 10}, {&amp;#x27;id&amp;#x27;: 4015, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;GDFNH&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Noida, Uttar Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T06:33:34.0443214&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4014, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;LOVE TRAVEL&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Noida, Uttar Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-21T06:31:43.2257966&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4013, &amp;#x27;title&amp;#x27;: &amp;#x27;LOVE SHIMLA&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4784, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/58101bb6-c95f-461b-8d7f-5fd407c6cc14.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-18T12:10:53.874409&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-18T12:10:53.8744081&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 0}, {&amp;#x27;id&amp;#x27;: 4012, &amp;#x27;title&amp;#x27;: None, &amp;#x27;description&amp;#x27;: &amp;#x27;SNOW TIME&amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;Shimla, Himachal Pradesh, India&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-18T10:41:16.0650027&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 10}, {&amp;#x27;id&amp;#x27;: 4011, &amp;#x27;title&amp;#x27;: &amp;#x27;Lorem Ipsum&amp;#x27;, &amp;#x27;description&amp;#x27;: &amp;#x27;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed lacus elit. Proin pharetra sapien a ultricies feugiat. Pellentesque laoreet sem id urna venenatis commodo. Mauris laoreet magna vel orci interdum finibus. Phasellus nec consectetur libero. Donec ornare elit id eros ullamcorper, vel accumsan ante aliquet. &amp;#x27;, &amp;#x27;location&amp;#x27;: &amp;#x27;London, UK&amp;#x27;, &amp;#x27;multiMedia&amp;#x27;: [{&amp;#x27;id&amp;#x27;: 4779, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/5a0b3b83-1adb-4fa4-8640-b6383eb375e0.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153083&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4780, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/f44e157a-968d-411b-b0a3-da1815f280f5.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153087&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4781, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/34eebc7c-ada5-4708-ad23-24da5235c7b9.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153091&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4782, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/b9df762b-cf84-4f2a-b4cf-2fed15828530.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153094&amp;#x27;}, {&amp;#x27;id&amp;#x27;: 4783, &amp;#x27;title&amp;#x27;: None, &amp;#x27;name&amp;#x27;: &amp;#x27;filename.jpg&amp;#x27;, &amp;#x27;description&amp;#x27;: None, &amp;#x27;url&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/feedsmedia/7059/1d6ba701-9695-45e9-ad08-f49299a318b0.jpg&amp;#x27;, &amp;#x27;createat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8153095&amp;#x27;}], &amp;#x27;createdat&amp;#x27;: &amp;#x27;2022-02-11T04:57:54.8152957&amp;#x27;, &amp;#x27;user&amp;#x27;: {&amp;#x27;userid&amp;#x27;: 7059, &amp;#x27;name&amp;#x27;: &amp;#x27;Happy Singh24&amp;#x27;, &amp;#x27;profilepicture&amp;#x27;: &amp;#x27;https://www.adequatetravel.com/ATMultimedia/UserProfileCover/7059/2bc2d9ae-4bc0-445a-852f-e3b49d05c553.png&amp;#x27;}, &amp;#x27;commentCount&amp;#x27;: 4}]}\n\nrest_tester/main.py:61: Failed\n\n------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:49 Testing json schema for http://restapi.adequateshop.com/api/Feed/GetNewsFeed \nINFO     rest_tester.logger:utils.py:34 Fetching class NewsFeeds from rest_tester.tests.responses\nINFO     rest_tester.logger:utils.py:39 Successfully fetched class NewsFeeds from rest_tester.tests.responses\n\n&#34;}], &#34;rest_tester/main.py::test_api[group1/ - /Tourist - statusCode]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,c3RhdHVzQ29kZQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,NDAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group1/ - /Tourist&#34;, &#34;result&#34;: &#34;Failed&#34;, &#34;duration&#34;: &#34;1 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group1/ - /Tourist&lt;/td&gt;&#34;, &#34;&lt;td&gt;statusCode&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td&gt;400&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;1 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;response = &amp;lt;Response [400]&amp;gt;, test = {&amp;#x27;type&amp;#x27;: &amp;#x27;statusCode&amp;#x27;, &amp;#x27;value&amp;#x27;: 200}\nrequest = &amp;lt;FixtureRequest for &amp;lt;Function test_api[group1/ - /Tourist - statusCode]&amp;gt;&amp;gt;\n\n    @pytest.mark.parametrize(&amp;quot;response, test&amp;quot;, test_inputs, ids=test_ids)\n    def test_api(response, test, request):\n        &amp;quot;&amp;quot;&amp;quot;\n        Generic test function to check single json at a time\n        &amp;quot;&amp;quot;&amp;quot;\n        json_response = get_json(response)\n    \n        request.node.add_marker(pytest.mark.test_type(test[&amp;quot;type&amp;quot;]))\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;timeout&amp;quot;:\n            logger.info(f&amp;quot;Testing timeout for {response.url}&amp;quot;)\n            expected_timeout = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_timeout&amp;#x27;]\n            if expected_timeout:\n                request.node.add_marker(pytest.mark.expected(str(expected_timeout)))  # Replace with actual expected value logic\n                request.node.add_marker(pytest.mark.actual(str(response.elapsed.total_seconds())))\n                assert (\n                    response.elapsed.total_seconds() &amp;lt;= expected_timeout\n                ), f&amp;quot;Expected timeout: {expected_timeout}, Actual timeout: {response.elapsed.total_seconds()} Response: {json_response}&amp;quot;\n    \n        if test[&amp;quot;type&amp;quot;] == &amp;quot;statusCode&amp;quot;:\n            logger.info(f&amp;quot;Testing status code for {response.url} &amp;quot;)\n            expected_status_code = test[&amp;quot;value&amp;quot;] or test_runner.config.default_test_settings[&amp;#x27;expected_status_code&amp;#x27;]\n            if expected_status_code:\n                request.node.add_marker(pytest.mark.expected(str(expected_status_code)))\n                request.node.add_marker(pytest.mark.actual(str(response.status_code)))\n&amp;gt;               assert (\n                    response.status_code == expected_status_code\n                ), f&amp;quot;Expected status code: {expected_status_code}, Actual status code: {response.status_code} Response: {json_response}&amp;quot;\nE               AssertionError: Expected status code: 200, Actual status code: 400 Response: {&amp;#x27;Message&amp;#x27;: &amp;#x27;Pleae try with different email address!&amp;#x27;}\nE               assert 400 == 200\nE                +  where 400 = &amp;lt;Response [400]&amp;gt;.status_code\n\nrest_tester/main.py:44: AssertionError\n\n------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:39 Testing status code for http://restapi.adequateshop.com/api/Tourist\n\n&#34;}], &#34;rest_tester/main.py::test_api[group1/ - /Tourist - timeout]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,dGltZW91dA==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MTA=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MC4wNzI5MjU=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group1/ - /Tourist&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group1/ - /Tourist&lt;/td&gt;&#34;, &#34;&lt;td&gt;timeout&lt;/td&gt;&#34;, &#34;&lt;td&gt;10&lt;/td&gt;&#34;, &#34;&lt;td&gt;0.072925&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:29 Testing timeout for http://restapi.adequateshop.com/api/Tourist\n\n&#34;}], &#34;rest_tester/main.py::test_api[group1/ - /Tourist - jsonSchema]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,anNvblNjaGVtYQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyJwcm9wZXJ0aWVzIjogeyJNZXNzYWdlIjogeyJ0aXRsZSI6ICJNZXNzYWdlIiwgInR5cGUiOiAic3RyaW5nIn19LCAicmVxdWlyZWQiOiBbIk1lc3NhZ2UiXSwgInRpdGxlIjogIk1lc3NhZ2UiLCAidHlwZSI6ICJvYmplY3QifQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyJwcm9wZXJ0aWVzIjogeyJNZXNzYWdlIjogeyJ0aXRsZSI6ICJNZXNzYWdlIiwgInR5cGUiOiAic3RyaW5nIn19LCAicmVxdWlyZWQiOiBbIk1lc3NhZ2UiXSwgInRpdGxlIjogIk1lc3NhZ2UiLCAidHlwZSI6ICJvYmplY3QifQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group1/ - /Tourist&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;2 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group1/ - /Tourist&lt;/td&gt;&#34;, &#34;&lt;td&gt;jsonSchema&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;properties\&#34;: {\&#34;Message\&#34;: {\&#34;title\&#34;: \&#34;Message\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;Message\&#34;], \&#34;title\&#34;: \&#34;Message\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;properties\&#34;: {\&#34;Message\&#34;: {\&#34;title\&#34;: \&#34;Message\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;Message\&#34;], \&#34;title\&#34;: \&#34;Message\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;2 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:49 Testing json schema for http://restapi.adequateshop.com/api/Tourist \nINFO     rest_tester.logger:utils.py:34 Fetching class Message from rest_tester.tests.responses\nINFO     rest_tester.logger:utils.py:39 Successfully fetched class Message from rest_tester.tests.responses\n\n&#34;}], &#34;rest_tester/main.py::test_api[group2/ - /users - statusCode]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,c3RhdHVzQ29kZQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group2/ - /users&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group2/ - /users&lt;/td&gt;&#34;, &#34;&lt;td&gt;statusCode&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:39 Testing status code for http://restapi.adequateshop.com/api/users?page=1\n\n&#34;}], &#34;rest_tester/main.py::test_api[group2/ - /users - timeout]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,dGltZW91dA==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MTA=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MC4wODcxMDk=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group2/ - /users&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group2/ - /users&lt;/td&gt;&#34;, &#34;&lt;td&gt;timeout&lt;/td&gt;&#34;, &#34;&lt;td&gt;10&lt;/td&gt;&#34;, &#34;&lt;td&gt;0.087109&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:29 Testing timeout for http://restapi.adequateshop.com/api/users?page=1\n\n&#34;}], &#34;rest_tester/main.py::test_api[group2/ - /users - jsonSchema]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,anNvblNjaGVtYQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyIkZGVmcyI6IHsiVXNlciI6IHsicHJvcGVydGllcyI6IHsiaWQiOiB7InRpdGxlIjogIklkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAibmFtZSI6IHsidGl0bGUiOiAiTmFtZSIsICJ0eXBlIjogInN0cmluZyJ9LCAiZW1haWwiOiB7InRpdGxlIjogIkVtYWlsIiwgInR5cGUiOiAic3RyaW5nIn0sICJwcm9maWxlcGljdHVyZSI6IHsidGl0bGUiOiAiUHJvZmlsZXBpY3R1cmUiLCAidHlwZSI6ICJzdHJpbmcifSwgImxvY2F0aW9uIjogeyJ0aXRsZSI6ICJMb2NhdGlvbiIsICJ0eXBlIjogInN0cmluZyJ9LCAiY3JlYXRlZGF0IjogeyJ0aXRsZSI6ICJDcmVhdGVkYXQiLCAidHlwZSI6ICJzdHJpbmcifX0sICJyZXF1aXJlZCI6IFsiaWQiLCAibmFtZSIsICJlbWFpbCIsICJwcm9maWxlcGljdHVyZSIsICJsb2NhdGlvbiIsICJjcmVhdGVkYXQiXSwgInRpdGxlIjogIlVzZXIiLCAidHlwZSI6ICJvYmplY3QifX0sICJwcm9wZXJ0aWVzIjogeyJwYWdlIjogeyJ0aXRsZSI6ICJQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAicGVyX3BhZ2UiOiB7InRpdGxlIjogIlBlciBQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxyZWNvcmQiOiB7InRpdGxlIjogIlRvdGFscmVjb3JkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxfcGFnZXMiOiB7InRpdGxlIjogIlRvdGFsIFBhZ2VzIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAiZGF0YSI6IHsiaXRlbXMiOiB7IiRyZWYiOiAiIy8kZGVmcy9Vc2VyIn0sICJ0aXRsZSI6ICJEYXRhIiwgInR5cGUiOiAiYXJyYXkifX0sICJyZXF1aXJlZCI6IFsicGFnZSIsICJwZXJfcGFnZSIsICJ0b3RhbHJlY29yZCIsICJ0b3RhbF9wYWdlcyIsICJkYXRhIl0sICJ0aXRsZSI6ICJVc2VycyIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyIkZGVmcyI6IHsiVXNlciI6IHsicHJvcGVydGllcyI6IHsiaWQiOiB7InRpdGxlIjogIklkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAibmFtZSI6IHsidGl0bGUiOiAiTmFtZSIsICJ0eXBlIjogInN0cmluZyJ9LCAiZW1haWwiOiB7InRpdGxlIjogIkVtYWlsIiwgInR5cGUiOiAic3RyaW5nIn0sICJwcm9maWxlcGljdHVyZSI6IHsidGl0bGUiOiAiUHJvZmlsZXBpY3R1cmUiLCAidHlwZSI6ICJzdHJpbmcifSwgImxvY2F0aW9uIjogeyJ0aXRsZSI6ICJMb2NhdGlvbiIsICJ0eXBlIjogInN0cmluZyJ9LCAiY3JlYXRlZGF0IjogeyJ0aXRsZSI6ICJDcmVhdGVkYXQiLCAidHlwZSI6ICJzdHJpbmcifX0sICJyZXF1aXJlZCI6IFsiaWQiLCAibmFtZSIsICJlbWFpbCIsICJwcm9maWxlcGljdHVyZSIsICJsb2NhdGlvbiIsICJjcmVhdGVkYXQiXSwgInRpdGxlIjogIlVzZXIiLCAidHlwZSI6ICJvYmplY3QifX0sICJwcm9wZXJ0aWVzIjogeyJwYWdlIjogeyJ0aXRsZSI6ICJQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAicGVyX3BhZ2UiOiB7InRpdGxlIjogIlBlciBQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxyZWNvcmQiOiB7InRpdGxlIjogIlRvdGFscmVjb3JkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxfcGFnZXMiOiB7InRpdGxlIjogIlRvdGFsIFBhZ2VzIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAiZGF0YSI6IHsiaXRlbXMiOiB7IiRyZWYiOiAiIy8kZGVmcy9Vc2VyIn0sICJ0aXRsZSI6ICJEYXRhIiwgInR5cGUiOiAiYXJyYXkifX0sICJyZXF1aXJlZCI6IFsicGFnZSIsICJwZXJfcGFnZSIsICJ0b3RhbHJlY29yZCIsICJ0b3RhbF9wYWdlcyIsICJkYXRhIl0sICJ0aXRsZSI6ICJVc2VycyIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group2/ - /users&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;6 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group2/ - /users&lt;/td&gt;&#34;, &#34;&lt;td&gt;jsonSchema&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;$defs\&#34;: {\&#34;User\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}}, \&#34;properties\&#34;: {\&#34;page\&#34;: {\&#34;title\&#34;: \&#34;Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;per_page\&#34;: {\&#34;title\&#34;: \&#34;Per Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;totalrecord\&#34;: {\&#34;title\&#34;: \&#34;Totalrecord\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;total_pages\&#34;: {\&#34;title\&#34;: \&#34;Total Pages\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;data\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/User\&#34;}, \&#34;title\&#34;: \&#34;Data\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}}, \&#34;required\&#34;: [\&#34;page\&#34;, \&#34;per_page\&#34;, \&#34;totalrecord\&#34;, \&#34;total_pages\&#34;, \&#34;data\&#34;], \&#34;title\&#34;: \&#34;Users\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;$defs\&#34;: {\&#34;User\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}}, \&#34;properties\&#34;: {\&#34;page\&#34;: {\&#34;title\&#34;: \&#34;Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;per_page\&#34;: {\&#34;title\&#34;: \&#34;Per Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;totalrecord\&#34;: {\&#34;title\&#34;: \&#34;Totalrecord\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;total_pages\&#34;: {\&#34;title\&#34;: \&#34;Total Pages\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;data\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/User\&#34;}, \&#34;title\&#34;: \&#34;Data\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}}, \&#34;required\&#34;: [\&#34;page\&#34;, \&#34;per_page\&#34;, \&#34;totalrecord\&#34;, \&#34;total_pages\&#34;, \&#34;data\&#34;], \&#34;title\&#34;: \&#34;Users\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;6 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:49 Testing json schema for http://restapi.adequateshop.com/api/users?page=1 \nINFO     rest_tester.logger:utils.py:34 Fetching class Users from rest_tester.tests.responses\nINFO     rest_tester.logger:utils.py:39 Successfully fetched class Users from rest_tester.tests.responses\n\n&#34;}], &#34;rest_tester/main.py::test_api[group2/ - /users/307046 - statusCode]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,c3RhdHVzQ29kZQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group2/ - /users/307046&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group2/ - /users/307046&lt;/td&gt;&#34;, &#34;&lt;td&gt;statusCode&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:39 Testing status code for http://restapi.adequateshop.com/api/users/307046\n\n&#34;}], &#34;rest_tester/main.py::test_api[group2/ - /users/307046 - timeout]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,dGltZW91dA==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MTA=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MC4yMzIzOTM=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group2/ - /users/307046&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group2/ - /users/307046&lt;/td&gt;&#34;, &#34;&lt;td&gt;timeout&lt;/td&gt;&#34;, &#34;&lt;td&gt;10&lt;/td&gt;&#34;, &#34;&lt;td&gt;0.232393&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:29 Testing timeout for http://restapi.adequateshop.com/api/users/307046\n\n&#34;}], &#34;rest_tester/main.py::test_api[group2/ - /users/307046 - jsonSchema]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,anNvblNjaGVtYQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyJwcm9wZXJ0aWVzIjogeyJpZCI6IHsidGl0bGUiOiAiSWQiLCAidHlwZSI6ICJpbnRlZ2VyIn0sICJuYW1lIjogeyJ0aXRsZSI6ICJOYW1lIiwgInR5cGUiOiAic3RyaW5nIn0sICJlbWFpbCI6IHsidGl0bGUiOiAiRW1haWwiLCAidHlwZSI6ICJzdHJpbmcifSwgInByb2ZpbGVwaWN0dXJlIjogeyJ0aXRsZSI6ICJQcm9maWxlcGljdHVyZSIsICJ0eXBlIjogInN0cmluZyJ9LCAibG9jYXRpb24iOiB7InRpdGxlIjogIkxvY2F0aW9uIiwgInR5cGUiOiAic3RyaW5nIn0sICJjcmVhdGVkYXQiOiB7InRpdGxlIjogIkNyZWF0ZWRhdCIsICJ0eXBlIjogInN0cmluZyJ9fSwgInJlcXVpcmVkIjogWyJpZCIsICJuYW1lIiwgImVtYWlsIiwgInByb2ZpbGVwaWN0dXJlIiwgImxvY2F0aW9uIiwgImNyZWF0ZWRhdCJdLCAidGl0bGUiOiAiVXNlciIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyJwcm9wZXJ0aWVzIjogeyJpZCI6IHsidGl0bGUiOiAiSWQiLCAidHlwZSI6ICJpbnRlZ2VyIn0sICJuYW1lIjogeyJ0aXRsZSI6ICJOYW1lIiwgInR5cGUiOiAic3RyaW5nIn0sICJlbWFpbCI6IHsidGl0bGUiOiAiRW1haWwiLCAidHlwZSI6ICJzdHJpbmcifSwgInByb2ZpbGVwaWN0dXJlIjogeyJ0aXRsZSI6ICJQcm9maWxlcGljdHVyZSIsICJ0eXBlIjogInN0cmluZyJ9LCAibG9jYXRpb24iOiB7InRpdGxlIjogIkxvY2F0aW9uIiwgInR5cGUiOiAic3RyaW5nIn0sICJjcmVhdGVkYXQiOiB7InRpdGxlIjogIkNyZWF0ZWRhdCIsICJ0eXBlIjogInN0cmluZyJ9fSwgInJlcXVpcmVkIjogWyJpZCIsICJuYW1lIiwgImVtYWlsIiwgInByb2ZpbGVwaWN0dXJlIiwgImxvY2F0aW9uIiwgImNyZWF0ZWRhdCJdLCAidGl0bGUiOiAiVXNlciIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group2/ - /users/307046&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;3 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group2/ - /users/307046&lt;/td&gt;&#34;, &#34;&lt;td&gt;jsonSchema&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;3 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:49 Testing json schema for http://restapi.adequateshop.com/api/users/307046 \nINFO     rest_tester.logger:utils.py:34 Fetching class User from rest_tester.tests.responses\nINFO     rest_tester.logger:utils.py:39 Successfully fetched class User from rest_tester.tests.responses\n\n&#34;}], &#34;rest_tester/main.py::test_api[group3/ - /users - statusCode]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,c3RhdHVzQ29kZQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group3/ - /users&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group3/ - /users&lt;/td&gt;&#34;, &#34;&lt;td&gt;statusCode&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:39 Testing status code for http://restapi.adequateshop.com/api/users?page=1\n\n&#34;}], &#34;rest_tester/main.py::test_api[group3/ - /users - timeout]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,dGltZW91dA==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MTA=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MC4xMDk1MTE=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group3/ - /users&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group3/ - /users&lt;/td&gt;&#34;, &#34;&lt;td&gt;timeout&lt;/td&gt;&#34;, &#34;&lt;td&gt;10&lt;/td&gt;&#34;, &#34;&lt;td&gt;0.109511&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:29 Testing timeout for http://restapi.adequateshop.com/api/users?page=1\n\n&#34;}], &#34;rest_tester/main.py::test_api[group3/ - /users - jsonSchema]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,anNvblNjaGVtYQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyIkZGVmcyI6IHsiVXNlciI6IHsicHJvcGVydGllcyI6IHsiaWQiOiB7InRpdGxlIjogIklkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAibmFtZSI6IHsidGl0bGUiOiAiTmFtZSIsICJ0eXBlIjogInN0cmluZyJ9LCAiZW1haWwiOiB7InRpdGxlIjogIkVtYWlsIiwgInR5cGUiOiAic3RyaW5nIn0sICJwcm9maWxlcGljdHVyZSI6IHsidGl0bGUiOiAiUHJvZmlsZXBpY3R1cmUiLCAidHlwZSI6ICJzdHJpbmcifSwgImxvY2F0aW9uIjogeyJ0aXRsZSI6ICJMb2NhdGlvbiIsICJ0eXBlIjogInN0cmluZyJ9LCAiY3JlYXRlZGF0IjogeyJ0aXRsZSI6ICJDcmVhdGVkYXQiLCAidHlwZSI6ICJzdHJpbmcifX0sICJyZXF1aXJlZCI6IFsiaWQiLCAibmFtZSIsICJlbWFpbCIsICJwcm9maWxlcGljdHVyZSIsICJsb2NhdGlvbiIsICJjcmVhdGVkYXQiXSwgInRpdGxlIjogIlVzZXIiLCAidHlwZSI6ICJvYmplY3QifX0sICJwcm9wZXJ0aWVzIjogeyJwYWdlIjogeyJ0aXRsZSI6ICJQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAicGVyX3BhZ2UiOiB7InRpdGxlIjogIlBlciBQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxyZWNvcmQiOiB7InRpdGxlIjogIlRvdGFscmVjb3JkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxfcGFnZXMiOiB7InRpdGxlIjogIlRvdGFsIFBhZ2VzIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAiZGF0YSI6IHsiaXRlbXMiOiB7IiRyZWYiOiAiIy8kZGVmcy9Vc2VyIn0sICJ0aXRsZSI6ICJEYXRhIiwgInR5cGUiOiAiYXJyYXkifX0sICJyZXF1aXJlZCI6IFsicGFnZSIsICJwZXJfcGFnZSIsICJ0b3RhbHJlY29yZCIsICJ0b3RhbF9wYWdlcyIsICJkYXRhIl0sICJ0aXRsZSI6ICJVc2VycyIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyIkZGVmcyI6IHsiVXNlciI6IHsicHJvcGVydGllcyI6IHsiaWQiOiB7InRpdGxlIjogIklkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAibmFtZSI6IHsidGl0bGUiOiAiTmFtZSIsICJ0eXBlIjogInN0cmluZyJ9LCAiZW1haWwiOiB7InRpdGxlIjogIkVtYWlsIiwgInR5cGUiOiAic3RyaW5nIn0sICJwcm9maWxlcGljdHVyZSI6IHsidGl0bGUiOiAiUHJvZmlsZXBpY3R1cmUiLCAidHlwZSI6ICJzdHJpbmcifSwgImxvY2F0aW9uIjogeyJ0aXRsZSI6ICJMb2NhdGlvbiIsICJ0eXBlIjogInN0cmluZyJ9LCAiY3JlYXRlZGF0IjogeyJ0aXRsZSI6ICJDcmVhdGVkYXQiLCAidHlwZSI6ICJzdHJpbmcifX0sICJyZXF1aXJlZCI6IFsiaWQiLCAibmFtZSIsICJlbWFpbCIsICJwcm9maWxlcGljdHVyZSIsICJsb2NhdGlvbiIsICJjcmVhdGVkYXQiXSwgInRpdGxlIjogIlVzZXIiLCAidHlwZSI6ICJvYmplY3QifX0sICJwcm9wZXJ0aWVzIjogeyJwYWdlIjogeyJ0aXRsZSI6ICJQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAicGVyX3BhZ2UiOiB7InRpdGxlIjogIlBlciBQYWdlIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxyZWNvcmQiOiB7InRpdGxlIjogIlRvdGFscmVjb3JkIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAidG90YWxfcGFnZXMiOiB7InRpdGxlIjogIlRvdGFsIFBhZ2VzIiwgInR5cGUiOiAiaW50ZWdlciJ9LCAiZGF0YSI6IHsiaXRlbXMiOiB7IiRyZWYiOiAiIy8kZGVmcy9Vc2VyIn0sICJ0aXRsZSI6ICJEYXRhIiwgInR5cGUiOiAiYXJyYXkifX0sICJyZXF1aXJlZCI6IFsicGFnZSIsICJwZXJfcGFnZSIsICJ0b3RhbHJlY29yZCIsICJ0b3RhbF9wYWdlcyIsICJkYXRhIl0sICJ0aXRsZSI6ICJVc2VycyIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group3/ - /users&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;7 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group3/ - /users&lt;/td&gt;&#34;, &#34;&lt;td&gt;jsonSchema&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;$defs\&#34;: {\&#34;User\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}}, \&#34;properties\&#34;: {\&#34;page\&#34;: {\&#34;title\&#34;: \&#34;Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;per_page\&#34;: {\&#34;title\&#34;: \&#34;Per Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;totalrecord\&#34;: {\&#34;title\&#34;: \&#34;Totalrecord\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;total_pages\&#34;: {\&#34;title\&#34;: \&#34;Total Pages\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;data\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/User\&#34;}, \&#34;title\&#34;: \&#34;Data\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}}, \&#34;required\&#34;: [\&#34;page\&#34;, \&#34;per_page\&#34;, \&#34;totalrecord\&#34;, \&#34;total_pages\&#34;, \&#34;data\&#34;], \&#34;title\&#34;: \&#34;Users\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;$defs\&#34;: {\&#34;User\&#34;: {\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}}, \&#34;properties\&#34;: {\&#34;page\&#34;: {\&#34;title\&#34;: \&#34;Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;per_page\&#34;: {\&#34;title\&#34;: \&#34;Per Page\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;totalrecord\&#34;: {\&#34;title\&#34;: \&#34;Totalrecord\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;total_pages\&#34;: {\&#34;title\&#34;: \&#34;Total Pages\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;data\&#34;: {\&#34;items\&#34;: {\&#34;$ref\&#34;: \&#34;#/$defs/User\&#34;}, \&#34;title\&#34;: \&#34;Data\&#34;, \&#34;type\&#34;: \&#34;array\&#34;}}, \&#34;required\&#34;: [\&#34;page\&#34;, \&#34;per_page\&#34;, \&#34;totalrecord\&#34;, \&#34;total_pages\&#34;, \&#34;data\&#34;], \&#34;title\&#34;: \&#34;Users\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;7 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:49 Testing json schema for http://restapi.adequateshop.com/api/users?page=1 \nINFO     rest_tester.logger:utils.py:34 Fetching class Users from rest_tester.tests.responses\nINFO     rest_tester.logger:utils.py:39 Successfully fetched class Users from rest_tester.tests.responses\n\n&#34;}], &#34;rest_tester/main.py::test_api[group3/ - /users/307045 - statusCode]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,c3RhdHVzQ29kZQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MjAw&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group3/ - /users/307045&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group3/ - /users/307045&lt;/td&gt;&#34;, &#34;&lt;td&gt;statusCode&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td&gt;200&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:39 Testing status code for http://restapi.adequateshop.com/api/users/307045\n\n&#34;}], &#34;rest_tester/main.py::test_api[group3/ - /users/307045 - timeout]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,dGltZW91dA==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MTA=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,MC4wOTY4OTY=&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group3/ - /users/307045&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;0 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group3/ - /users/307045&lt;/td&gt;&#34;, &#34;&lt;td&gt;timeout&lt;/td&gt;&#34;, &#34;&lt;td&gt;10&lt;/td&gt;&#34;, &#34;&lt;td&gt;0.096896&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;0 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:29 Testing timeout for http://restapi.adequateshop.com/api/users/307045\n\n&#34;}], &#34;rest_tester/main.py::test_api[group3/ - /users/307045 - jsonSchema]&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: &#34;Test Type&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,anNvblNjaGVtYQ==&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Expected&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyJwcm9wZXJ0aWVzIjogeyJpZCI6IHsidGl0bGUiOiAiSWQiLCAidHlwZSI6ICJpbnRlZ2VyIn0sICJuYW1lIjogeyJ0aXRsZSI6ICJOYW1lIiwgInR5cGUiOiAic3RyaW5nIn0sICJlbWFpbCI6IHsidGl0bGUiOiAiRW1haWwiLCAidHlwZSI6ICJzdHJpbmcifSwgInByb2ZpbGVwaWN0dXJlIjogeyJ0aXRsZSI6ICJQcm9maWxlcGljdHVyZSIsICJ0eXBlIjogInN0cmluZyJ9LCAibG9jYXRpb24iOiB7InRpdGxlIjogIkxvY2F0aW9uIiwgInR5cGUiOiAic3RyaW5nIn0sICJjcmVhdGVkYXQiOiB7InRpdGxlIjogIkNyZWF0ZWRhdCIsICJ0eXBlIjogInN0cmluZyJ9fSwgInJlcXVpcmVkIjogWyJpZCIsICJuYW1lIiwgImVtYWlsIiwgInByb2ZpbGVwaWN0dXJlIiwgImxvY2F0aW9uIiwgImNyZWF0ZWRhdCJdLCAidGl0bGUiOiAiVXNlciIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}, {&#34;name&#34;: &#34;Actual&#34;, &#34;format_type&#34;: &#34;text&#34;, &#34;content&#34;: &#34;data:text/plain;charset=utf-8;base64,eyJwcm9wZXJ0aWVzIjogeyJpZCI6IHsidGl0bGUiOiAiSWQiLCAidHlwZSI6ICJpbnRlZ2VyIn0sICJuYW1lIjogeyJ0aXRsZSI6ICJOYW1lIiwgInR5cGUiOiAic3RyaW5nIn0sICJlbWFpbCI6IHsidGl0bGUiOiAiRW1haWwiLCAidHlwZSI6ICJzdHJpbmcifSwgInByb2ZpbGVwaWN0dXJlIjogeyJ0aXRsZSI6ICJQcm9maWxlcGljdHVyZSIsICJ0eXBlIjogInN0cmluZyJ9LCAibG9jYXRpb24iOiB7InRpdGxlIjogIkxvY2F0aW9uIiwgInR5cGUiOiAic3RyaW5nIn0sICJjcmVhdGVkYXQiOiB7InRpdGxlIjogIkNyZWF0ZWRhdCIsICJ0eXBlIjogInN0cmluZyJ9fSwgInJlcXVpcmVkIjogWyJpZCIsICJuYW1lIiwgImVtYWlsIiwgInByb2ZpbGVwaWN0dXJlIiwgImxvY2F0aW9uIiwgImNyZWF0ZWRhdCJdLCAidGl0bGUiOiAiVXNlciIsICJ0eXBlIjogIm9iamVjdCJ9&#34;, &#34;mime_type&#34;: &#34;text/plain&#34;, &#34;extension&#34;: &#34;txt&#34;}], &#34;testId&#34;: &#34;group3/ - /users/307045&#34;, &#34;result&#34;: &#34;Passed&#34;, &#34;duration&#34;: &#34;3 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-testId\&#34;&gt;group3/ - /users/307045&lt;/td&gt;&#34;, &#34;&lt;td&gt;jsonSchema&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td&gt;{\&#34;properties\&#34;: {\&#34;id\&#34;: {\&#34;title\&#34;: \&#34;Id\&#34;, \&#34;type\&#34;: \&#34;integer\&#34;}, \&#34;name\&#34;: {\&#34;title\&#34;: \&#34;Name\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;email\&#34;: {\&#34;title\&#34;: \&#34;Email\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;profilepicture\&#34;: {\&#34;title\&#34;: \&#34;Profilepicture\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;location\&#34;: {\&#34;title\&#34;: \&#34;Location\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}, \&#34;createdat\&#34;: {\&#34;title\&#34;: \&#34;Createdat\&#34;, \&#34;type\&#34;: \&#34;string\&#34;}}, \&#34;required\&#34;: [\&#34;id\&#34;, \&#34;name\&#34;, \&#34;email\&#34;, \&#34;profilepicture\&#34;, \&#34;location\&#34;, \&#34;createdat\&#34;], \&#34;title\&#34;: \&#34;User\&#34;, \&#34;type\&#34;: \&#34;object\&#34;}&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;3 ms&lt;/td&gt;&#34;], &#34;log&#34;: &#34;------------------------------ Captured log call -------------------------------\nINFO     rest_tester.logger:main.py:49 Testing json schema for http://restapi.adequateshop.com/api/users/307045 \nINFO     rest_tester.logger:utils.py:34 Fetching class User from rest_tester.tests.responses\nINFO     rest_tester.logger:utils.py:39 Successfully fetched class User from rest_tester.tests.responses\n\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;report_2024-02-23-05:06:25.html&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > td')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > td')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+</html>
