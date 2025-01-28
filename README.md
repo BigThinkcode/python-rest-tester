@@ -1,5 +1,5 @@
-# rest-api-testing-framework
-Welcome to the REST API Testing Framework, a robust and flexible solution for testing REST-based applications. This framework is built on the powerful Pytest library and is designed to work with Python 3.10, ensuring you have the latest features at your disposal.
+# python-rest-tester-framework
+Welcome to the Python REST tester, the API Testing Framework, with a robust and flexible solution for testing REST-based applications. This framework is built on the powerful Pytest library and is designed to work with Python 3.10, ensuring you have the latest features at your disposal.
 
 ## Features
   **Comprehensive HTTP Method Support**: Whether you're testing GET, POST, PUT, DELETE, or any other HTTP method, our framework has you covered.
@@ -39,9 +39,9 @@ Welcome to the REST API Testing Framework, a robust and flexible solution for te
 1. Send a POST request to 'https://dummyjson.com/auth/login' with below JSON body,
 	```json
 	{
-    username: 'emilys',
-    password: 'emilyspass',
-    expiresInMins: 30, // optional, defaults to 60
+    "username": "emilys",
+    "password": "emilyspass",
+    "expiresInMins": 30, // optional, defaults to 60
   	}
 	```
 2. You can use any user's credentials from 'dummyjson.com/users'.
@@ -51,8 +51,8 @@ Welcome to the REST API Testing Framework, a robust and flexible solution for te
 ---
 1. Execute the following commands to get started:,
 	```sh
-	$ git clone https://github.com/BigThinkcode/rest-api-testing
-    $ cd rest-api-testing
+	$ git clone https://github.com/BigThinkcode/python-rest-tester
+    $ cd python-rest-tester
 	```
 2. To run the app straight away with HTML report after setting up tests and configs in dev mode, use below make command,
 	```sh
@@ -69,8 +69,8 @@ Welcome to the REST API Testing Framework, a robust and flexible solution for te
 ---
 1. Execute the following commands to get started:,
 	```sh
-	$ git clone https://github.com/BigThinkcode/rest-api-testing
-    $ cd rest-api-testing
+	$ git clone https://github.com/BigThinkcode/python-rest-tester
+    $ cd python-rest-tester
 	```
 2. Create a virtual environment using below command,
 	```sh
