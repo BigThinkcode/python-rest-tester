@@ -16,6 +16,8 @@ datamodel-code-generator = "^0.25.2"
 requests = "^2.31.0"
 postmanparser = { git = "https://github.com/appknox/postmanparser.git", rev = "aa1bbf5eab2b6da79489af0e4982a0ae76dc6fec" }
 jsf = "^0.11.2"
+h11 = "0.16.0"
+jinja2 = "3.1.6"
 
 
 [build-system]
